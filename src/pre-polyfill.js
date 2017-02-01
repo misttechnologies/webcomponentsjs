@@ -64,4 +64,26 @@
     customElements.forcePolyfill = forceCE;
   }
 
+  if (!window.customElements || window.customElements.forcePolyfill) {
+    if (!window.customElements) {
+      window.customElements = {};
+    }
+
+    window.customElements.forcePolyfill = true;
+
+    var readyState = document.readyState;
+    if (readyState !== 'interactive' && readyState !== 'complete') {
+      console.log('installing flush callback');
+      customElements.polyfillFlushCallback = function() {};
+      document.addEventListener('readystatechange', function onReadystatechange() {
+        var readyState = document.readyState;
+        if (readyState === 'interactive' || readyState === 'complete') {
+          document.removeEventListener('readystatechange', onReadystatechange);
+          console.log('disabling flush callback');
+          customElements.polyfillFlushCallback = undefined;
+        }
+      });
+    }
+  }
+
 })();
