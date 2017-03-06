@@ -21,7 +21,7 @@
     "es6-promise": "stefanpenner/es6-promise#^4.0.0",
     "html-imports": "webcomponents/html-imports#master",
     "shadydom": "webcomponents/shadydom#master",
-    "shadycss": "webcomponents/shadycss#master",
+    "shadycss": "misttechnologies/shadycss#bugfix/whenready",
     "template": "webcomponents/template#master",
     "webcomponents-platform": "webcomponents/webcomponents-platform#master"
   }
