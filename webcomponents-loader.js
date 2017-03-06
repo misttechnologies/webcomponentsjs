@@ -36,7 +36,7 @@
     let newScript = document.createElement('script');
     // Load it from the right place.
     var url = script.src.replace(
-      'webcomponents-loader.js', `webcomponents-${polyfills.join('-')}.js`);
+      'webcomponents-loader.js', 'webcomponents-' + polyfills.join('-') + '.js');
     newScript.src = url;
     document.head.appendChild(newScript);
   } else {
