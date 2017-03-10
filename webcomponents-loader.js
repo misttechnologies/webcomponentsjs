@@ -38,6 +38,19 @@
     var url = script.src.replace(
       'webcomponents-loader.js', 'webcomponents-' + polyfills.join('-') + '.js');
     newScript.src = url;
+
+    var readyIssued = false;
+    window.addEventListener('WebComponentsReady', function() {
+      readyIssued = true;
+    });
+    newScript.addEventListener('load', function() {
+      if (!readyIssued) {
+        // Ensure `WebComponentsReady` is fired also when polyfills did not fire it.
+        requestAnimationFrame(function() {
+          window.dispatchEvent(new CustomEvent('WebComponentsReady'));
+        });
+      }
+    });
     document.head.appendChild(newScript);
   } else {
     // Ensure `WebComponentsReady` is fired also when there are no polyfills loaded.

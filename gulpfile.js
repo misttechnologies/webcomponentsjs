@@ -91,6 +91,10 @@ gulp.task('debugify-hi', () => {
   return debugify('webcomponents-hi')
 });
 
+gulp.task('debugify-ce', () => {
+  return debugify('webcomponents-ce')
+});
+
 gulp.task('debugify-hi-ce', () => {
   return debugify('webcomponents-hi-ce')
 });
@@ -109,6 +113,10 @@ gulp.task('debugify-sd-ce', () => {
 
 gulp.task('closurify-hi', () => {
   return closurify('webcomponents-hi')
+});
+
+gulp.task('closurify-ce', () => {
+  return closurify('webcomponents-ce')
 });
 
 gulp.task('closurify-hi-ce', () => {
@@ -140,8 +148,8 @@ gulp.task('default', (cb) => {
   runseq('refresh-bower', 'closure', cb);
 });
 
-gulp.task('debug', ['debugify-hi', 'debugify-hi-ce', 'debugify-hi-sd-ce', 'debugify-hi-sd-ce-pf', 'debugify-sd-ce']);
+gulp.task('debug', ['debugify-hi', 'debugify-ce', 'debugify-hi-ce', 'debugify-hi-sd-ce', 'debugify-hi-sd-ce-pf', 'debugify-sd-ce']);
 
 gulp.task('closure', (cb) => {
-  runseq(...['closurify-hi', 'closurify-hi-ce', 'closurify-hi-sd-ce', 'closurify-hi-sd-ce-pf', 'closurify-sd-ce'], cb);
+  runseq(...['closurify-hi', 'closurify-ce', 'closurify-hi-ce', 'closurify-hi-sd-ce', 'closurify-hi-sd-ce-pf', 'closurify-sd-ce'], cb);
 });
