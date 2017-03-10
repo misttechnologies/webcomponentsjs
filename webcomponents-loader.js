@@ -10,7 +10,7 @@
 
 (function() {
   // Feature detect which polyfill needs to be imported.
-  let polyfills = [];
+  var polyfills = [];
   if (!('import' in document.createElement('link'))) {
     polyfills.push('hi');
   }
@@ -33,7 +33,7 @@
 
   if (polyfills.length) {
     var script = document.querySelector('script[src*="webcomponents-loader.js"]');
-    let newScript = document.createElement('script');
+    var newScript = document.createElement('script');
     // Load it from the right place.
     var url = script.src.replace(
       'webcomponents-loader.js', 'webcomponents-' + polyfills.join('-') + '.js');
