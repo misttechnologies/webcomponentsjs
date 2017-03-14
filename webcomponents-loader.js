@@ -44,12 +44,12 @@
       readyIssued = true;
     });
     newScript.addEventListener('load', function() {
-      if (!readyIssued) {
-        // Ensure `WebComponentsReady` is fired also when polyfills did not fire it.
-        requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        if (!readyIssued) {
+          // Ensure `WebComponentsReady` is fired also when polyfills did not fire it.
           window.dispatchEvent(new CustomEvent('WebComponentsReady'));
-        });
-      }
+        }
+      });
     });
     document.head.appendChild(newScript);
   } else {
